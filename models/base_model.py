@@ -16,7 +16,7 @@ class BaseModel():
     def __init__(self, *args, **kwargs):
         '''
             constructor for Base model class
-            Args: 
+            Args:
             id - string, assign with uuid when instance is created
             created_at - assign datetime when instance is created
             updated_at - assign datetime when instance is updated
@@ -30,7 +30,7 @@ class BaseModel():
             string representation of a class
         '''
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
-                self.__dict__)
+                                     self.__dict__)
 
     def save(self):
         '''
