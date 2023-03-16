@@ -29,7 +29,8 @@ class FileStorage():
         return self.__objects
 
     def new(self, obj):
-        ''' sets in objects with key classname.id
+        '''
+            sets in objects with key classname.id
             Args:
                 obj
         '''
@@ -37,22 +38,24 @@ class FileStorage():
         self.__objects["{}.{}".format(obj.__class__.__name__, obj.id)] = obj
 
     def save(self):
-        ''' serializes __objects to JSON file '''
-
-        new_dict = {}
+        '''
+            serializes __objects to JSON file
+        '''
+        newdict = {}
         with open(self.__file_path, mode='w+', encoding='utf-8') as f:
-            for key, value in self.__objects.items():
-                new_dict[key] = value.to_dict()
-                json.dump(new_dict, f)
+            for k, v in self.__objects.items():
+                newdict[k] = v.to_dict()
+                json.dump(newdict, f)
 
     def reload(self):
-        ''' deserializes the JSON file '''
-
+        '''
+            deserializes the JSON file
+        '''
         try:
             with open(self.__file_path, mode='r', encoding='utf-8') as f:
-                new_obj = json.load(f)
-                for key, value in new_obj.items():
-                    re_obj = eval('{}(**value)'.format(value['__class__']))
-                    self.__objects[key] = re_obj
+                newobjects = json.load(f)
+                for k, v in newobjects.items():
+                    reloadedobj = eval('{}(**v)'.format(v['__class__']))
+                    self.__objects[k] = reloadedobj
         except IOError:
             pass
