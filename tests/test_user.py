@@ -84,6 +84,7 @@ class TestUser_instantiation(unittest.TestCase):
         self.assertEqual(us.created_at, dt)
         self.assertEqual(us.updated_at, dt)
 
+
 class TestUser_save(unittest.TestCase):
     """Unittests for testing save method of the  class."""
 

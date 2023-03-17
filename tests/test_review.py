@@ -90,6 +90,7 @@ class TestReview_instantiation(unittest.TestCase):
         self.assertEqual(rv.created_at, dt)
         self.assertEqual(rv.updated_at, dt)
 
+
 class TestReview_save(unittest.TestCase):
     """Unittests for testing save method of the Review class."""
 

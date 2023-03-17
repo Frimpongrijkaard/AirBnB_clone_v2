@@ -84,6 +84,7 @@ class TestCity_instantiation(unittest.TestCase):
         self.assertEqual(cy.created_at, dt)
         self.assertEqual(cy.updated_at, dt)
 
+
 class TestCity_save(unittest.TestCase):
     """Unittests for testing save method of the City class."""
 

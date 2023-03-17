@@ -78,6 +78,7 @@ class TestState_instantiation(unittest.TestCase):
         self.assertEqual(st.created_at, dt)
         self.assertEqual(st.updated_at, dt)
 
+
 class TestState_save(unittest.TestCase):
     """Unittests for testing save method of the State class."""
 
