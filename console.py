@@ -6,7 +6,7 @@ import re
 import json
 from models import storage
 from models.base_model import BaseModel
-from models.user impoer User
+from models.user import User
 
 
 def parse(line):
