@@ -6,6 +6,7 @@ from models.city import City
 from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
+from models.user import User
 """
 module store file of any instance created write and read them
 
