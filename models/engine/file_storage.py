@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import json
+from pickletools import pydict
 from models.base_model import BaseModel
 from models.state import State
 from models.city import City
@@ -35,7 +36,22 @@ class FileStorage:
         serialize __object to the json file 
         
         """
-        
+        mydict = {}
+        obj_dict = FileStorage.__objects
+        for key1 in obj_dict.key():
+            for key2, value2 in obj_dict.to_dict[key1].items():
+                mydict[key2] = value2
+                
         with open(FileStorage.__file_path, 'w') as f:
-            f.write(json.dumps(FileStorage.__file_path))
-    
+            json.dump(mydict, f)
+            
+    def reload(self):
+        """deserialize the json file """
+        
+        try:
+            with open(FileStorage.__file_path, 'r') as f:
+                    OM = json.load(f)
+                    return OM
+                    
+        except FileNotFoundError:
+            return 

@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-import models
+from models import storage 
 from uuid import uuid4
 from datetime import datetime
+
 
 """
 Basemodel of which other classes of  model 
@@ -38,6 +39,8 @@ class BaseModel:
                     
                 else:
                     self.__dict__[key] = value
+        else:
+            storage.new(self)
         
         
     def __str__(self):
@@ -46,6 +49,7 @@ class BaseModel:
     
     def save(self):
         self.updated_at =  datetime.now()
+        storage.save(self)
         
         
     def to_dic(self):
@@ -54,8 +58,17 @@ class BaseModel:
         obj['updated_at'] = self.updateed_at.isoformat()
         obj['__class__'] = self.__class__.__name__
         return obj
-        
-        
     
     
     
+my_model = BaseModel()
+my_model.name = "My First Model"
+my_model.my_number = 89
+print(my_model)
+my_model.save()
+print(my_model)
+my_model_json = my_model.to_dict()
+print(my_model_json)
+print("JSON of my_model:")
+for key in my_model_json.keys():
+    print("\t{}: ({}) - {}".format(key, type(my_model_json[key]), my_model_json[key]))
